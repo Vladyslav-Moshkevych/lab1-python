@@ -1,3 +1,4 @@
+
 users = {
     "yaroslav": ("1111", [12, 10, 8, 4]),
     "stepan": ("2222", [9, 6, 3, 11]),
@@ -5,13 +6,26 @@ users = {
     "max": ("4444", [7, 8, 2, 10])
 }
 
-login = input("Логін: ")
-password = input("Пароль: ")
+login = input("Введіть логін: ")
+password = input("Введіть пароль: ")
 
 if login in users and password == users[login][0]:
     grades = users[login][1]
-    print("Оцінки:", grades)
-    print("Задовільні:", sum(5 <= x <= 12 for x in grades))
-    print("Незадовільні:", sum(1 <= x <= 4 for x in grades))
+
+    print("Ваші оцінки:", grades)
+
+    good = 0
+    bad = 0
+
+    for grade in grades:
+        if 5 <= grade <= 12:
+            good += 1
+        else:
+            bad += 1
+
+    print("Кількість оцінок:", len(grades))
+    print("Задовільні:", good)
+    print("Незадовільні:", bad)
+
 else:
     print("Неправильний логін або пароль")
